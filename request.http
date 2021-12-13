@@ -1,0 +1,38 @@
+GET http://localhost:3030/books/61a6089278dd18b4369f2eaf
+
+###
+
+GET http://localhost:3030/books/21a6089278dd18b4369f2eaf
+
+###
+
+GET http://localhost:3030/books
+
+###
+GET http://localhost:3030/books?limit=2
+
+###
+
+POST http://localhost:3030/books
+Content-Type: application/json
+
+{
+    "title": "Marvels",
+    "description": "Plein de super héro !",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/800px-Marvel_Logo.svg.png",
+    "price": 56,
+    "categorie": { "ertr": "BD"}
+}
+
+###
+
+DELETE http://localhost:3030/books/61a73f3998709894d1695179
+
+####
+
+PATCH http://localhost:3030/books/61a76fbac0492595ceada26e
+Content-Type: application/json
+
+{
+    "price": 7.99
+}

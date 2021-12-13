@@ -1,0 +1,110 @@
+     app.get('/', () => 'Hello World');
+  
+  /* app.get('/additionner/:number1/:number2', async (request, reply) => {
+        reply.header(`Content-Type`, `text/html`);
+        return `<h1>Le r&eacute;sultat est ${
+            parseInt(request.params.number1) + parseInt(request.params.number2)
+        }<h1>`;
+    }); */
+
+       /* app.get('/books', () => {
+        return [
+            { id: 1, titre: 'toto' },
+            { id: 2, titre: 'titi' },
+        ];
+    }); */
+
+    /*app.get('/books', () => {
+        return [
+            { id: 1, title: 'Harry Potter' },
+            { id: 2, title: 'Livre 2' },
+            { id: 3, title: 'Livre 3' },
+            { id: 4, title: 'Livre 4' },
+            { id: 5, title: 'Livre 5' },
+        ];
+    });*/
+
+    app.get('/PS5', () => 'The best hardware in this world !');
+
+ 
+
+    app.get('/books/:id', (request, reply) => {
+        const tabs = [
+            { id: 1, title: 'Harry Potter' },
+            { id: 2, title: 'Livre 2' },
+            { id: 3, title: 'Livre 3' },
+            { id: 4, title: 'Livre 4' },
+            { id: 5, title: 'Livre 5' },
+        ];
+        let book = tabs.find(book => book.id === parseInt(request.params.id));
+        if (!book) {
+            reply.code(404);
+            return { message: 'no book' };
+        }
+
+        return book;
+    });
+
+
+    app.decorate('books', [
+        { id: 1, title: 'Harry Potter' },
+        { id: 2, title: 'Livre 2' },
+        { id: 3, title: 'Livre 3' },
+        { id: 4, title: 'Livre 4' },
+        { id: 5, title: 'Livre 5' },
+    ]);
+
+    app.decorateRequest('books', [
+        { id: 1, title: 'Harry Potter' },
+        { id: 2, title: 'Livre 2' },
+        { id: 3, title: 'Livre 3' },
+        { id: 4, title: 'Livre 4' },
+        { id: 5, title: 'Livre 5' },
+    ]);
+
+    app.decorateReply('books', [
+        { id: 1, title: 'Harry Potter' },
+        { id: 2, title: 'Livre 2' },
+        { id: 3, title: 'Livre 3' },
+        { id: 4, title: 'Livre 4' },
+        { id: 5, title: 'Livre 5' },
+    ]);
+
+    {
+        schema: {
+            body: {
+
+            },
+            queryStringg:{
+
+            },
+            response:  {
+                
+            }
+        }
+    }
+
+    {
+            schema: {
+                body: {
+                    type: 'object',
+                    properties: {
+                        title: {
+                            type: 'string',
+                        },
+                        description: {
+                            type: 'string',
+                        },
+                        image: {
+                            type: 'string',
+                        },
+                        price: {
+                            type: 'number',
+                            exclusiveMinimun: 0,
+                        },
+                    },
+                    required: ['title', 'description', 'image', 'price'],
+                    additionalProperties: false,
+                },
+            },
+        }
