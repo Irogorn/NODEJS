@@ -34,6 +34,8 @@ export default async function bookRoutes(app) {
             reply.code(201);
             return book;*/
 
+            await request.jwtVerify();
+
             reply.code(201);
             return app.books.create(request.body);
         },
